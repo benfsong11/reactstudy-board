@@ -15,10 +15,15 @@ export default function BoardDetails() {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
-    BoardService.getBoardById(
-      currentUser ? currentUser.id : BigInt(0),
-      state.id
-    )
+    BoardService.getComments()
+      .then((res) => {
+        setComments(res.data);
+      })
+      .catch((err) => console.error(err));
+
+    if (currentUser == null) return;
+
+    BoardService.getBoardById(currentUser.id, state.id)
       .then((res) => {
         setBoard(res.data);
         console.log(res);
@@ -26,13 +31,7 @@ export default function BoardDetails() {
       .catch((err) => {
         console.error(err);
       });
-
-    BoardService.getComments()
-      .then((res) => {
-        setComments(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, [state.id]);
+  });
 
   function deletePosting() {
     BoardService.deleteBoard(state.id)

@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import BoardService from "../service/BoardService";
-import {
-  postForUpdateVar,
-  postsVar,
-  isUpdateModeVar,
-  userVar,
-} from "../vars/var";
+import { postForUpdateVar, isUpdateModeVar } from "../vars/var";
 import { useReactiveVar } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { User } from "../api";
@@ -13,7 +8,6 @@ import { User } from "../api";
 export default function WriteBoardComponent() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const posts = useReactiveVar(postsVar);
   const boardForUpdate = useReactiveVar(postForUpdateVar);
   const isUpdateMode = useReactiveVar(isUpdateModeVar);
   const [buttonText, setButtonText] = useState("등록");
@@ -99,7 +93,7 @@ export default function WriteBoardComponent() {
         placeholder="내용을 입력하세요."
         style={{
           width: "100%",
-          height: "37.5rem",
+          height: "27.5rem",
           resize: "none",
           border: "1px solid #B4B4B3",
           fontSize: 20,

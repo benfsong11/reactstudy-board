@@ -1,4 +1,4 @@
-import NavBar from "./components/NavBar";
+import NavBar from "./components/organisms/NavBar";
 import BoardDetails from "./pages/BoardDetails";
 import ListBoardComponent from "./pages/ListBoardComponent";
 import WriteBoardComponent from "./pages/WriteBoardComponent";

@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { UserDto } from "../dtos/Dto";
 
 const USER_API_BASE_URL = "http://localhost:8080/api/board/user";

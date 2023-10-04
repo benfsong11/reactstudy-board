@@ -1,4 +1,4 @@
-export interface Post {
+export type Post = {
   id: BigInt;
   title: string;
   body: string;
@@ -7,15 +7,15 @@ export interface Post {
   createdAt: string;
   updatedAt: string;
   isDeleted: boolean;
-}
+};
 
-export interface User {
+export type User = {
   id: BigInt;
   username: string;
   password: string;
-}
+};
 
-export interface Comment {
+export type Comment = {
   id: BigInt;
   body: string;
   user: User | null;
@@ -23,4 +23,4 @@ export interface Comment {
   updatedAt: string;
   isDeleted: boolean;
   post: Post;
-}
+};

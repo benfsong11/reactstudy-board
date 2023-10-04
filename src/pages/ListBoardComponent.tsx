@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BoardService from "../service/BoardService";
 import { useReactiveVar } from "@apollo/client";
 import { postsVar } from "../vars/var";
 import { ReactComponent as Pencil } from "../assets/icons/ic_pencil.svg";
 import { useNavigate } from "react-router-dom";
 import { Post } from "../api";
-import BoardView from "../components/BoardView";
-import ReactPaginate from "react-paginate";
-import "../components/Paging.css";
-import MyPaginate from "../components/MyPaginate";
+import PostItem from "../components/organisms/PostItem";
+import { Pagination } from "../components/atoms/Pagination";
+import { AlignCenter } from "../components/atoms/Alignment";
 
 export default function ListBoardComponent() {
   const posts = useReactiveVar(postsVar);
@@ -79,18 +78,12 @@ export default function ListBoardComponent() {
         {currentPosts.map(
           (post) =>
             post.isDeleted === false && (
-              <BoardView key={post.id.toString()} post={post} />
+              <PostItem key={post.id.toString()} post={post} />
             )
         )}
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <MyPaginate
+      <AlignCenter>
+        <Pagination
           previousLabel={"〈"}
           nextLabel={"〉"}
           breakLabel={"..."}
@@ -107,7 +100,7 @@ export default function ListBoardComponent() {
           nextLinkClassName="page-link"
           activeClassName="active"
         />
-      </div>
+      </AlignCenter>
     </div>
   );
 }
